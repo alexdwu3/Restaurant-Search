@@ -25,9 +25,9 @@ const SearchScreen = ({ navigation }) => {
             {/* conditionally show errorMessage if it's not the empty string */}
             {errorMessage ? <Text style={styles.text}>{errorMessage}</Text> : null}  
             <ScrollView>
-                <Businesses navigation={navigation} priceHeader='$' businesses={filterBusinessesByPrice('$')} />
-                <Businesses navigation={navigation} priceHeader='$$' businesses={filterBusinessesByPrice('$$')} />
-                <Businesses navigation={navigation} priceHeader='$$$' businesses={filterBusinessesByPrice('$$$')} />
+                <Businesses priceHeader='$' businesses={filterBusinessesByPrice('$')} />
+                <Businesses priceHeader='$$' businesses={filterBusinessesByPrice('$$')} />
+                <Businesses priceHeader='$$$' businesses={filterBusinessesByPrice('$$$')} />
             </ScrollView>
         </>
   );
