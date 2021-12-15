@@ -30,9 +30,11 @@ const styles = StyleSheet.create({
         fontSize: 35,
         alignSelf: 'center',
         fontWeight: "bold",
+        marginBottom: 20,
+        marginTop: 10,
     },
     container: {
-        marginBottom: 15,
+
     }
 });
 

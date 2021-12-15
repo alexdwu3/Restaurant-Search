@@ -7,6 +7,7 @@ const BusinessDetailScreen = ({ navigation }) => {
     const [errorMsg, setErrorMsg] = useState("")
     const id = navigation.getParam("id")
     
+    console.log(business)
     
     const getBusiness = async (id) => {
         try{
@@ -28,23 +29,53 @@ const BusinessDetailScreen = ({ navigation }) => {
     }
 
     return <View>
-        <Text> {business.name} </Text>
+        <Text style={styles.businessName}> {business.name}  ({business.rating} stars)</Text>
+        <Text style={styles.text}> Category: {business.categories[0].title}</Text>
+        <Text style={styles.text}> Phone: {business.display_phone}</Text>
+        <Text style={styles.text}> Location: {business.location.address1}, {business.location.city}, {business.location.country}</Text>
+
+
+        <Text style={styles.photoHeader}>Yelp User Photos:</Text>
         <FlatList
             horizontal
+            showsHorizontalScrollIndicator = "false"
             data = {business.photos}
             keyExtractor= {photo => photo} // photo is a unique string, so you can just return it as the key
             renderItem = {({ item }) => {
                 return <Image style = {styles.image} source = {{uri: item}}/>
             }}
         />
+        
         <Text> {errorMsg} </Text>
     </View>
 }
 
 const styles = StyleSheet.create({
     image: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
+        marginLeft: 10,
+        marginRight: 5,
+        borderRadius: 8,
+    },
+    businessName: {
+        fontSize: 20,
+        alignSelf: 'center',
+        fontWeight: "bold",
+        marginVertical: 30,
+    },
+    text: {
+        fontSize: 15,
+        marginLeft: 10,
+        marginBottom: 10,
+        // fontWeight: "bold",
+    },
+    photoHeader: {
+        fontSize: 15,
+        marginLeft: 10,
+        marginTop: 50,
+        marginBottom: 15,
+        fontWeight: "bold",
     }
 })
 
